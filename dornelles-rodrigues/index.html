@@ -1517,8 +1517,7 @@
             <div class="chip"><div class="k">Gestão</div>CMS / painel administrativo</div>
             <div class="chip"><div class="k">Estrutura</div>Páginas internas adicionais</div>
             <div class="chip"><div class="k">Texto</div>Copywriting profissional completo</div>
-            <div class="chip">IMAGEM
-Sessão fotográfica institucional gerada por IA</div>
+            <div class="chip"><div class="k">Imagens</div> Sessão fotográfica institucional gerada por IA</div>
             <div class="chip"><div class="k">Impressos</div>Papelaria e materiais físicos</div>
             <div class="chip"><div class="k">Relacionamento</div>Newsletter e automações</div>
             <div class="chip"><div class="k">Suporte</div>Manutenção mensal contínua</div>
@@ -1612,6 +1611,26 @@ Sessão fotográfica institucional gerada por IA</div>
       if (Math.abs(dx) < THRESHOLD) return;
       if (dx < 0) stage.next(); else stage.prev();
     }, { passive: true });
+  })();
+</script>
+
+<script>
+  // Hide deck-stage's built-in bottom overlay (slide counter pill)
+  (function() {
+    function hideOverlay() {
+      var stage = document.querySelector('deck-stage');
+      if (!stage || !stage.shadowRoot) return false;
+      var ov = stage.shadowRoot.querySelector('.overlay');
+      if (!ov) return false;
+      ov.style.display = 'none';
+      return true;
+    }
+    if (!hideOverlay()) {
+      var tries = 0;
+      var iv = setInterval(function() {
+        if (hideOverlay() || ++tries > 40) clearInterval(iv);
+      }, 150);
+    }
   })();
 </script>
 
